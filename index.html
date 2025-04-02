@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Explorer's Creed</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://www.publicdomainpictures.net/pictures/30000/velka/ancient-papyrus.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Georgia, serif;
+      color: #3b2f1e;
+      line-height: 1.8;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 248, 220, 0.85); /* parchment look */
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+
+    .author-year {
+      font-style: italic;
+      font-size: 1em;
+      margin-bottom: 2em;
+    }
+
+    .poem {
+      text-align: center;
+      white-space: pre-line;
+      font-size: 1.1em;
+      margin-bottom: 3em;
+    }
+
+    .subscribe-box {
+      background-color: rgba(245, 222, 179, 0.8);
+      border: 1px solid #a67c52;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .subscribe-box input[type="email"] {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #a67c52;
+      border-radius: 6px;
+      font-size: 1em;
+      margin-right: 10px;
+    }
+
+    .subscribe-box input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #a67c52;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .subscribe-box input[type="submit"]:hover {
+      background-color: #8b5e3c;
+    }
+
+    @media (max-width: 600px) {
+      .subscribe-box input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .subscribe-box input[type="submit"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Explorer's Creed</h1>
+    <div class="author-year">Benjamin Mutebi, 2025 AD</div>
+
+    <div class="poem">
+Man was created to be fruitful, multiply and have dominion over everything on Earth.
+The men to whom this truth was revealed only saw a small part of the grand plan.
+The One who created didn’t stop on earth.
+The stars, His grander Gallery, are out there. Their beauty begs my eyes to look.
+I must see what my creator made above the firmament.
+The glitters that lighten up my sky call me with a deep attraction.
+All beauty must be seen. And the heavens are more beautiful than what my desires could ever conjure.
+They humble me in my insignificance. And yet they smirk to remind me that maybe I am the only one here.
+And I am that special.
+But as long as my eyes can see, I long to see every corner of my creator’s world.
+I will explore the ends of the earth and the ends of our galaxy.
+And what I haven’t completed my son surely will.
+“The zeal for your house shall consume me.”
+The zeal to see the majesty of your mind in creation, shall be the last thing I feel.
+For that zeal is mine every moment I am awake.
+I am here to see, and to see I shall do.
+Till the furthest end of the universe, the seed of Adam must see.
+So prepare your feet, oh monkeys of the Earth.
+We are going to where we belong, everywhere!!!
+    </div>
+
+    <div class="subscribe-box">
+        <form id="subscribe-form">
+            <label for="email"><strong>Enter your email to receive intergalactic news updates:</strong></label><br><br>
+            <input type="email" name="email" required placeholder="you@example.com" />
+            <input type="submit" value="Subscribe" />
+        </form>
+        <!-- Toast Notification Container -->
+        <div id="toast" style="
+        visibility: hidden;
+        min-width: 250px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+        font-size: 17px;
+        opacity: 0;
+        transition: opacity 0.6s, visibility 0.6s;
+        "></div>
+
+    </div>
+  </div>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby04eSJ91xrWDOdc_Gn5JxT51QIMsJlkK-fri1_euAphMEel-vV8XMGVwKNGc2_L5a1/exec'; // Replace with your Web App URL
+    const form = document.getElementById('subscribe-form');
+    const toast = document.getElementById('toast');
+    
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+    
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => {
+          if (response.ok) {
+            showToast("Welcome aboard, fellow Earthling!", "green");
+            form.reset();
+          } else {
+            throw new Error("Network error");
+          }
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          showToast("Oops! Something went wrong. Try again later.", "red");
+        });
+    });
+    
+    function showToast(message, color) {
+      toast.textContent = message;
+      toast.style.backgroundColor = color;
+      toast.style.visibility = "visible";
+      toast.style.opacity = "1";
+    
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.visibility = "hidden";
+      }, 4000); // Toast disappears after 4 seconds
+    }
+    </script>
+</body>
+</html>
